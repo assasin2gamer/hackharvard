@@ -9,13 +9,14 @@ import time
 from pylsl import StreamInlet, resolve_stream
 import pickle
 import base64
-
+import websockets
 import firebase_admin
 from firebase_admin import credentials, db
 import random
 from pybloom_live import BloomFilter
 import mne
-
+import asyncio
+import pyautogui
 
 import hashlib
 import string
@@ -69,6 +70,9 @@ def collect(row):
 
     else:
         #send
+        if (1 in temp_data):
+            pyautogui.press('enter')
+        
         bloom = generate_random_string(row)
         ref = db.reference("/data/" + bloom) 
         ref.push(temp_data)
@@ -180,6 +184,15 @@ def collect_eeg_data():
 def stop_threads():
     global is_running
     is_running = False
+async def send_message():
+    uri = "ws://127.0.0.1:8000"
+    async with websockets.connect(uri) as websocket:
+        await websocket.send("Hello from the client!")
+
+def start_websocket_client():
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    loop.run_until_complete(send_message())
 
 def main():
     global label_var
