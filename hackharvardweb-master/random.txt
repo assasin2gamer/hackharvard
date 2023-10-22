@@ -1,0 +1,149 @@
+
+  
+  //initializing core components of our app
+  let space_counter = 2;
+  let categories;
+  let output;
+  let firstChoice;
+
+  //initializing blink_Counter to be used with respect to our test button
+  const [presses, setPresses] = useState(0);
+
+  useEffect(() => {
+    // Define the event handler
+    const handleKeyPress = (event) => {
+      if (event.keyCode === 32) { // 32 is the key code for the space bar
+        setPresses(prevCount => prevCount + 1);
+      }
+    };
+
+    // Add the event listener
+    window.addEventListener('keydown', handleKeyPress);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, []); // The empty dependency array ensures this useEffect runs once when the component mounts
+
+  //we'll initialize what will appear as our c
+  //we'll start with a numbered version of all options
+  categories = choices;
+
+  //initialize our output to the output-labelled div
+  output = "";
+
+  //some counter to indicate whether we're referring to our first category or the nested character
+  //counter = 0 will represent our first category choice
+  //counter = 1 will represent which choice in that category we're appending
+  let counter = 0;
+
+
+  //in every [something] time interval, we'll do the following
+  //for testing purposes, let [something] be 3 seconds
+  setInterval(
+    function centralTimeLoop(){
+
+      console.log("this means it ran");
+  
+      //the code we run in this c
+      switch(counter){
+  
+        //note that nothing in either case runs when blink_counter = 0
+        //this is because we'll use it to gauge how long till a space
+        case 0:
+  
+          console.log("case = 0");
+          //initialize some variable to save what our first category "choice" was
+          firstChoice = 0;
+  
+          //we change the visual to represent the subarray at choices[blink_counter - 1]
+          //that's the category they "chose"
+          console.log(presses);
+          if(presses > 0 && presses < 9){
+            console.log("conditional 1");
+            //we choose our category
+            categories = choices[presses - 1]
+  
+            //the index of our firstChoice is how many blinks we underwent
+            firstChoice = presses;
+            
+            //add 1 to counter to account for the fact that we're now picking our specific subelement
+            counter++;
+  
+            //reset our blink_counter
+            setPresses(0);
+  
+            break;
+            //capping rapid blinks at the highest category, AKA quit
+          } else if (presses >= 9){
+            console.log("conditional 2");
+            //we backspace of the user chose the last option
+            output = output.slice(0,-1);
+  
+            //reset our blink_counter
+            setPresses(0);
+  
+            //for testing
+            console.log("backspace");
+          }
+  
+          break;
+  
+        case 1:
+          //we'll determine our subelement
+          if(presses > 0 && presses < choices[firstChoice].length){
+            console.log("conditional 3");
+            //we now have our subelement
+            //let's append it to our output
+            output += choices[firstChoice][presses];
+  
+            //reset our blink_counter
+            setPresses(0);
+            
+            //bring counter back to 0
+            counter = 0;
+  
+            break;
+            
+            //capping rapid blinks at the highest category, AKA quit
+          } else if (presses >= choices[firstChoice].length){
+            console.log("conditional 4");
+            //we now have our subelement
+            //let's append it to our output
+            output += choices[firstChoice][choices[firstChoice].length - 1];
+  
+            //reset our blink_counter
+            setPresses(0);
+            
+            //bring counter back to 0
+            counter = 0;
+            
+          }
+          //let's revert our categories list back to the original form
+          categories = choices;
+      }
+    }, 3000)
+
+
+  useEffect(() => {
+    new Granim({
+      element: "#gradient-canvas",
+      direction: "left-right",
+      opacity: [1,1],
+      states: {
+        "default-state": {
+          gradients: [
+            ["#040147", "#085701"],
+            ["#b50297", "#b00239"],
+            ["#c96100", "#057c87"],
+            ["#b00239", "#b50297"],
+            ["#057c87", "#c96100"],
+            ["#b50297", "#b00239"],
+          ],
+          transitionSpeed: 5000,
+        },
+      },
+    });
+  }, []);
+  output += choices[0][4];
