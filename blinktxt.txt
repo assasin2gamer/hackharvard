@@ -1,0 +1,131 @@
+import tkinter as tk
+import threading
+import numpy as np
+import pandas as pd
+from scipy.signal import find_peaks
+import csv
+import random
+import time
+from pylsl import StreamInlet, resolve_stream
+import json
+import os
+
+
+
+import firebase_admin
+from firebase_admin import credentials, db
+
+
+#REPLACE THE SERVICE ACCOUNT KEY WITH A PLACEHOLDER BEFORE COMMITTING!!!
+cred = credentials.Certificate("C:\\Users\\nurel\\Downloads\\hackharvard-bdacd-firebase-adminsdk-foqqg-90577590bb.json")
+firebase_admin.initialize_app(cred, {'databaseURL': 'https://hackharvard-bdacd-default-rtdb.firebaseio.com/'})
+
+ref = db.reference('path/to/collection')
+
+
+# Global variables
+current_label = 1
+label_var = None
+sample_data = []
+is_running = True
+
+def output_formatted_json(sample): 
+    data = {}
+
+    for i in range(100):
+        data[i] = list(sample)
+
+    return json.dumps(data, indent=1)
+
+def save_to_csv(sample, label):
+    with open('numbers10.csv', 'a', newline='') as csvfile:
+        csv_writer = csv.writer(csvfile)
+
+        # Write the sample data along with the label to the CSV file
+        row = [label] + list(sample)
+        csv_writer.writerow(row)
+
+def switch_label():
+    global current_label
+    current_label = random.randrange(10)
+    label_var.set(current_label)
+
+def label_switch_timer():
+    while is_running:
+        switch_label()
+        window.update()
+        time.sleep(5)
+
+def collect_eeg_data():
+    global ref
+    streams = resolve_stream('type', 'EEG')
+    inlet = StreamInlet(streams[0])
+
+    while is_running:
+        sample, _ = inlet.pull_sample()
+        label = current_label  # Save the current label
+        sample_data.append((label, sample))
+
+        # Call save_to_csv to save the sample with the label
+        save_to_csv(sample, label)
+
+        #Output a formatted json for 100 instances of sample
+        data_json = output_formatted_json(sample);
+
+        #Output our formatted json file to our Firebase database
+        ref.push(data_json);
+
+        # Extract the data for the 16 channels
+        eeg_data = np.array(sample)
+        if eeg_data.ndim == 1:  # Check if the array is 1D
+            eeg_data = eeg_data[:, np.newaxis]  # Reshape the 1D array to a 2D array with a single column
+            #print(f"Reshaped eeg_data: {eeg_data.shape}")
+
+        # Define parameters for peak detection
+        threshold = 5000  # Adjust this based on your data and noise levels
+        distance = 500  # Adjust this based on the expected minimum distance between blinks
+
+        # Function to detect peaks (eye blinks) in the signal
+        def detect_blinks(signal):
+            peaks, _ = find_peaks(signal, height=threshold, distance=distance)
+            return peaks
+
+        # Detect eye blinks for each channel
+        if len(eeg_data.shape) > 1:
+            for channel_index in range(eeg_data.shape[1]):
+                channel_data = eeg_data[:, channel_index]
+                peaks = detect_blinks(channel_data)
+                #print(f"Detected {len(peaks)} blinks in channel {channel_index + 1}")
+                print(len(peaks))
+        else:
+            print("Invalid shape of eeg_data. Expected 2D array.")
+
+def stop_threads():
+    global is_running
+    is_running = False
+
+def main():
+    global label_var
+    global window
+    window = tk.Tk()
+    window.title('EEG Data Annotation')
+    window.geometry("400x600")
+
+    label_var = tk.StringVar()
+    label_var.set(current_label)
+    label = tk.Label(window, textvariable=label_var, font=('Helvetica', 96))
+    label.pack(fill='both', expand=True)
+
+    label_thread = threading.Thread(target=label_switch_timer)
+    label_thread.daemon = True
+    label_thread.start()
+
+    eeg_thread = threading.Thread(target=collect_eeg_data)
+    eeg_thread.daemon = True
+    eeg_thread.start()
+
+    window.protocol("WM_DELETE_WINDOW", stop_threads)  # To handle window close event
+    window.mainloop()
+
+if __name__ == '__main__':
+    main()

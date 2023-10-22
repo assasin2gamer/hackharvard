@@ -1,0 +1,122 @@
+[debug] [2023-10-21T22:02:52.681Z] ----------------------------------------------------------------------
+[debug] [2023-10-21T22:02:52.683Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\nurel\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-10-21T22:02:52.684Z] CLI Version:   12.7.0
+[debug] [2023-10-21T22:02:52.684Z] Platform:      win32
+[debug] [2023-10-21T22:02:52.684Z] Node Version:  v18.18.2
+[debug] [2023-10-21T22:02:52.685Z] Time:          Sat Oct 21 2023 18:02:52 GMT-0400 (Eastern Daylight Time)
+[debug] [2023-10-21T22:02:52.685Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-10-21T22:02:52.694Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-10-21T22:02:52.695Z] > authorizing via signed-in user (adamgohain@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\fuck u who uses onedrive\hackharvard-master\hackharvard-master
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2023-10-21T22:03:58.152Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2023-10-21T22:03:58.152Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"tinuviel","name":"hire me"}
+[debug] [2023-10-21T22:03:58.594Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 200
+[debug] [2023-10-21T22:03:58.594Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"name":"operations/cp.6510448698213877770"}
+[debug] [2023-10-21T22:03:58.595Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.6510448698213877770 [none]
+[debug] [2023-10-21T22:03:59.002Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.6510448698213877770 200
+[debug] [2023-10-21T22:03:59.003Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.6510448698213877770 {"name":"operations/cp.6510448698213877770"}
+[debug] [2023-10-21T22:03:59.515Z] [Project Creation Poller] Retrying task index 0
+[debug] [2023-10-21T22:03:59.516Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.6510448698213877770 [none]
+[debug] [2023-10-21T22:03:59.888Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.6510448698213877770 200
+[debug] [2023-10-21T22:03:59.889Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.6510448698213877770 {"name":"operations/cp.6510448698213877770"}
+[debug] [2023-10-21T22:04:00.896Z] [Project Creation Poller] Retrying task index 0
+[debug] [2023-10-21T22:04:00.898Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.6510448698213877770 [none]
+[debug] [2023-10-21T22:04:01.344Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.6510448698213877770 200
+[debug] [2023-10-21T22:04:01.345Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.6510448698213877770 {"name":"operations/cp.6510448698213877770","metadata":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.ProjectCreationStatus","gettable":true}}
+[debug] [2023-10-21T22:04:03.352Z] [Project Creation Poller] Retrying task index 0
+[debug] [2023-10-21T22:04:03.353Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.6510448698213877770 [none]
+[debug] [2023-10-21T22:04:03.750Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.6510448698213877770 200
+[debug] [2023-10-21T22:04:03.750Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.6510448698213877770 {"name":"operations/cp.6510448698213877770","metadata":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.ProjectCreationStatus","gettable":true,"ready":true},"done":true,"response":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.Project","projectNumber":"231366881153","projectId":"tinuviel","lifecycleState":"ACTIVE","name":"hire me","createTime":"2023-10-21T22:04:00.230Z"}}
+[debug] [2023-10-21T22:04:03.753Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1beta1/projects/tinuviel:addFirebase [none]
+[debug] [2023-10-21T22:04:06.471Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1beta1/projects/tinuviel:addFirebase 200
+[debug] [2023-10-21T22:04:06.471Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1beta1/projects/tinuviel:addFirebase {"name":"operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2"}
+[debug] [2023-10-21T22:04:06.472Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2 [none]
+[debug] [2023-10-21T22:04:07.079Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2 200
+[debug] [2023-10-21T22:04:07.080Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2 {"name":"operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2"}
+[debug] [2023-10-21T22:04:07.582Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2023-10-21T22:04:07.584Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2 [none]
+[debug] [2023-10-21T22:04:08.106Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2 200
+[debug] [2023-10-21T22:04:08.106Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2 {"name":"operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2"}
+[debug] [2023-10-21T22:04:09.111Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2023-10-21T22:04:09.112Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2 [none]
+[debug] [2023-10-21T22:04:09.541Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2 200
+[debug] [2023-10-21T22:04:09.542Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2 {"name":"operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2"}
+[debug] [2023-10-21T22:04:11.542Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2023-10-21T22:04:11.542Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2 [none]
+[debug] [2023-10-21T22:04:11.895Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2 200
+[debug] [2023-10-21T22:04:11.896Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2 {"name":"operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2"}
+[debug] [2023-10-21T22:04:15.898Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2023-10-21T22:04:15.902Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2 [none]
+[debug] [2023-10-21T22:04:16.301Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2 200
+[debug] [2023-10-21T22:04:16.301Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2 {"name":"operations/workflows/MDAzMzBlODktOTQ0NC00NGQ3LTg0NzItYzA4OTM1ZjRiMTk2","done":true,"response":{"@type":"type.googleapis.com/google.firebase.service.v1beta1.FirebaseProject","projectId":"tinuviel","projectNumber":"231366881153","displayName":"hire me","name":"projects/tinuviel","resources":{"hostingSite":"tinuviel"}}}
+[info] 
+[info] === Your Firebase project is ready! ===
+[info] 
+[info] Project information:
+[info]    - Project ID: tinuviel
+[info]    - Project Name: hire me
+[info] 
+[info] Firebase console is available at
+[info] https://console.firebase.google.com/project/tinuviel/overview
+[info] i  Using project tinuviel (hire me) 
+[info] 
+=== Functions Setup
+[debug] [2023-10-21T22:04:16.318Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-10-21T22:04:16.319Z] > authorizing via signed-in user (adamgohain@gmail.com)
+[debug] [2023-10-21T22:04:16.319Z] [iam] checking project tinuviel for permissions ["firebase.projects.get"]
+[debug] [2023-10-21T22:04:16.320Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/tinuviel:testIamPermissions [none]
+[debug] [2023-10-21T22:04:16.320Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/tinuviel:testIamPermissions x-goog-quota-user=projects/tinuviel
+[debug] [2023-10-21T22:04:16.320Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/tinuviel:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-10-21T22:04:16.912Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/tinuviel:testIamPermissions 200
+[debug] [2023-10-21T22:04:16.913Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/tinuviel:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-10-21T22:04:16.914Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/tinuviel/services/cloudfunctions.googleapis.com [none]
+[debug] [2023-10-21T22:04:16.914Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/tinuviel/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/tinuviel
+[debug] [2023-10-21T22:04:16.916Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/tinuviel/services/runtimeconfig.googleapis.com [none]
+[debug] [2023-10-21T22:04:16.917Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/tinuviel/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/tinuviel
+[debug] [2023-10-21T22:04:17.937Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/tinuviel/services/runtimeconfig.googleapis.com 200
+[debug] [2023-10-21T22:04:17.938Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/tinuviel/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2023-10-21T22:04:17.965Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/tinuviel/services/cloudfunctions.googleapis.com 200
+[debug] [2023-10-21T22:04:17.966Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/tinuviel/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2023-10-21T22:04:17.967Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/tinuviel/services/cloudfunctions.googleapis.com:enable [none]
+[debug] [2023-10-21T22:04:17.967Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/tinuviel/services/cloudfunctions.googleapis.com:enable x-goog-quota-user=projects/tinuviel
+[debug] [2023-10-21T22:04:19.645Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/tinuviel/services/cloudfunctions.googleapis.com:enable 200
+[debug] [2023-10-21T22:04:19.645Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/tinuviel/services/cloudfunctions.googleapis.com:enable [omitted]
+[debug] [2023-10-21T22:04:29.656Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/tinuviel/services/cloudfunctions.googleapis.com [none]
+[debug] [2023-10-21T22:04:29.656Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/tinuviel/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/tinuviel
+[debug] [2023-10-21T22:04:30.739Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/tinuviel/services/cloudfunctions.googleapis.com 200
+[debug] [2023-10-21T22:04:30.739Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/tinuviel/services/cloudfunctions.googleapis.com [omitted]
+[info] Let's create a new codebase for your functions.
+[info] A directory corresponding to the codebase will be created in your project
+[info] with sample code pre-configured.
+
+[info] See https://firebase.google.com/docs/functions/organize-functions for
+[info] more information on organizing your functions using codebases.
+
+[info] Functions can be deployed with firebase deploy.
+
+[info] +  Wrote functions/requirements.txt 
+[info] +  Wrote functions/.gitignore 
+[info] +  Wrote functions/main.py 
